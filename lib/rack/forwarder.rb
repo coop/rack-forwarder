@@ -54,7 +54,8 @@ module Rack
 
     def headers_from_response(headers)
       HEADERS_TO_FORWARD.each_with_object(Utils::HeaderHash.new) do |header, hash|
-        hash[header] = headers[header]
+        value = headers[header]
+        hash[header] = value if value
       end
     end
   end
